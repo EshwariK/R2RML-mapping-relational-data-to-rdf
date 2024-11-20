@@ -1,0 +1,96 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix : <http://seminar128.org/student_info#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#MAPPING-ID1>
+    rr:logicalTable [ rr:tableName "student" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/student_info/student/{id}";
+        rr:class :student;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :firstName;
+        rr:objectMap [
+            rr:datatype xsd:string;
+            rr:termType rr:Literal;
+            rr:column "firstname";
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :lastName;
+        rr:objectMap [
+            rr:datatype xsd:string;
+            rr:termType rr:Literal;
+            rr:column "lastname";
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :cgpa;
+        rr:objectMap [
+            rr:datatype xsd:decimal;
+            rr:termType rr:Literal;
+            rr:column "cgpa";
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :dob;
+        rr:objectMap [
+            rr:datatype xsd:date;
+            rr:termType rr:Literal;
+            rr:column "dob";
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :enrolledIn;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID2>;
+            rr:joinCondition [
+                rr:child "program_id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+<#MAPPING-ID2>
+    rr:logicalTable [ rr:tableName "program" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/student_info/program/{id}";
+        rr:class :student;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :programName;
+        rr:objectMap [
+            rr:datatype xsd:string;
+            rr:termType rr:Literal;
+            rr:column "name";
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :belongsTo;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID3>;
+            rr:joinCondition [
+                rr:child "department_id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+<#MAPPING-ID3>
+    rr:logicalTable [ rr:tableName "department" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/student_info/department/{id}";
+        rr:class :student;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :departmentName;
+        rr:objectMap [
+            rr:datatype xsd:string;
+            rr:termType rr:Literal;
+            rr:column "name";
+        ];
+    ].

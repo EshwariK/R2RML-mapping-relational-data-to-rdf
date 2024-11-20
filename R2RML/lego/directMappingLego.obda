@@ -1,0 +1,77 @@
+[PrefixDeclaration]
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+owl:		http://www.w3.org/2002/07/owl#
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+
+[MappingDeclaration] @collection [[
+mappingId	MAPPING-ID1
+target		<http://seminar128.com/lego_colors/id={id}> a <http://seminar128.com/lego_colors> ; <http://seminar128.com/lego_colors#id> {id}^^xsd:integer ; <http://seminar128.com/lego_colors#name> {name}^^xsd:string ; <http://seminar128.com/lego_colors#rgb> {rgb}^^xsd:string ; <http://seminar128.com/lego_colors#is_trans> {is_trans}^^xsd:string . 
+source		SELECT * FROM "lego_colors"
+
+mappingId	MAPPING-ID2
+target		<http://seminar128.com/lego_themes/id={id}> a <http://seminar128.com/lego_themes> ; <http://seminar128.com/lego_themes#id> {id}^^xsd:integer ; <http://seminar128.com/lego_themes#name> {name}^^xsd:string ; <http://seminar128.com/lego_themes#parent_id> {parent_id}^^xsd:integer . 
+source		SELECT * FROM "lego_themes"
+
+mappingId	MAPPING-ID3
+target		<http://seminar128.com/lego_themes/id={lego_themes_FK_id}> <http://seminar128.com/lego_themes#ref-parent_id> <http://seminar128.com/lego_themes/id={lego_themes_FKR_id}> . 
+source		SELECT "lego_themes_FK"."id" AS "lego_themes_FK_id", "lego_themes_FKR"."id" AS "lego_themes_FKR_id" FROM "lego_themes" AS "lego_themes_FK", "lego_themes" AS "lego_themes_FKR" WHERE "lego_themes_FK"."parent_id" = "lego_themes_FKR"."id"
+
+mappingId	MAPPING-ID4
+target		_:ontop-bnode-1{inventory_id}/{set_num}/{quantity} a <http://seminar128.com/lego_inventory_sets> ; <http://seminar128.com/lego_inventory_sets#inventory_id> {inventory_id}^^xsd:integer ; <http://seminar128.com/lego_inventory_sets#set_num> {set_num}^^xsd:string ; <http://seminar128.com/lego_inventory_sets#quantity> {quantity}^^xsd:integer . 
+source		SELECT * FROM "lego_inventory_sets"
+
+mappingId	MAPPING-ID5
+target		_:ontop-bnode-1{lego_inventory_sets_inventory_id}/{lego_inventory_sets_set_num}/{lego_inventory_sets_quantity} <http://seminar128.com/lego_inventory_sets#ref-inventory_id> <http://seminar128.com/lego_inventories/id={lego_inventories_id}> . 
+source		SELECT "lego_inventory_sets"."inventory_id" AS "lego_inventory_sets_inventory_id", "lego_inventory_sets"."set_num" AS "lego_inventory_sets_set_num", "lego_inventory_sets"."quantity" AS "lego_inventory_sets_quantity", "lego_inventories"."id" AS "lego_inventories_id" FROM "lego_inventory_sets", "lego_inventories" WHERE "lego_inventory_sets"."inventory_id" = "lego_inventories"."id"
+
+mappingId	MAPPING-ID6
+target		_:ontop-bnode-1{lego_inventory_sets_inventory_id}/{lego_inventory_sets_set_num}/{lego_inventory_sets_quantity} <http://seminar128.com/lego_inventory_sets#ref-set_num> <http://seminar128.com/lego_sets/set_num={lego_sets_set_num}> . 
+source		SELECT "lego_inventory_sets"."inventory_id" AS "lego_inventory_sets_inventory_id", "lego_inventory_sets"."set_num" AS "lego_inventory_sets_set_num", "lego_inventory_sets"."quantity" AS "lego_inventory_sets_quantity", "lego_sets"."set_num" AS "lego_sets_set_num" FROM "lego_inventory_sets", "lego_sets" WHERE "lego_inventory_sets"."set_num" = "lego_sets"."set_num"
+
+mappingId	MAPPING-ID7
+target		<http://seminar128.com/lego_part_categories/id={id}> a <http://seminar128.com/lego_part_categories> ; <http://seminar128.com/lego_part_categories#id> {id}^^xsd:integer ; <http://seminar128.com/lego_part_categories#name> {name}^^xsd:string . 
+source		SELECT * FROM "lego_part_categories"
+
+mappingId	MAPPING-ID8
+target		_:ontop-bnode-2{inventory_id}/{part_num}/{color_id}/{quantity}/{is_spare} a <http://seminar128.com/lego_inventory_parts> ; <http://seminar128.com/lego_inventory_parts#inventory_id> {inventory_id}^^xsd:integer ; <http://seminar128.com/lego_inventory_parts#part_num> {part_num}^^xsd:string ; <http://seminar128.com/lego_inventory_parts#color_id> {color_id}^^xsd:integer ; <http://seminar128.com/lego_inventory_parts#quantity> {quantity}^^xsd:integer ; <http://seminar128.com/lego_inventory_parts#is_spare> {is_spare}^^xsd:boolean . 
+source		SELECT * FROM "lego_inventory_parts"
+
+mappingId	MAPPING-ID9
+target		_:ontop-bnode-2{lego_inventory_parts_inventory_id}/{lego_inventory_parts_part_num}/{lego_inventory_parts_color_id}/{lego_inventory_parts_quantity}/{lego_inventory_parts_is_spare} <http://seminar128.com/lego_inventory_parts#ref-color_id> <http://seminar128.com/lego_colors/id={lego_colors_id}> . 
+source		SELECT "lego_inventory_parts"."inventory_id" AS "lego_inventory_parts_inventory_id", "lego_inventory_parts"."part_num" AS "lego_inventory_parts_part_num", "lego_inventory_parts"."color_id" AS "lego_inventory_parts_color_id", "lego_inventory_parts"."quantity" AS "lego_inventory_parts_quantity", "lego_inventory_parts"."is_spare" AS "lego_inventory_parts_is_spare", "lego_colors"."id" AS "lego_colors_id" FROM "lego_inventory_parts", "lego_colors" WHERE "lego_inventory_parts"."color_id" = "lego_colors"."id"
+
+mappingId	MAPPING-ID10
+target		_:ontop-bnode-2{lego_inventory_parts_inventory_id}/{lego_inventory_parts_part_num}/{lego_inventory_parts_color_id}/{lego_inventory_parts_quantity}/{lego_inventory_parts_is_spare} <http://seminar128.com/lego_inventory_parts#ref-inventory_id> <http://seminar128.com/lego_inventories/id={lego_inventories_id}> . 
+source		SELECT "lego_inventory_parts"."inventory_id" AS "lego_inventory_parts_inventory_id", "lego_inventory_parts"."part_num" AS "lego_inventory_parts_part_num", "lego_inventory_parts"."color_id" AS "lego_inventory_parts_color_id", "lego_inventory_parts"."quantity" AS "lego_inventory_parts_quantity", "lego_inventory_parts"."is_spare" AS "lego_inventory_parts_is_spare", "lego_inventories"."id" AS "lego_inventories_id" FROM "lego_inventory_parts", "lego_inventories" WHERE "lego_inventory_parts"."inventory_id" = "lego_inventories"."id"
+
+mappingId	MAPPING-ID11
+target		_:ontop-bnode-2{lego_inventory_parts_inventory_id}/{lego_inventory_parts_part_num}/{lego_inventory_parts_color_id}/{lego_inventory_parts_quantity}/{lego_inventory_parts_is_spare} <http://seminar128.com/lego_inventory_parts#ref-part_num> <http://seminar128.com/lego_parts/part_num={lego_parts_part_num}> . 
+source		SELECT "lego_inventory_parts"."inventory_id" AS "lego_inventory_parts_inventory_id", "lego_inventory_parts"."part_num" AS "lego_inventory_parts_part_num", "lego_inventory_parts"."color_id" AS "lego_inventory_parts_color_id", "lego_inventory_parts"."quantity" AS "lego_inventory_parts_quantity", "lego_inventory_parts"."is_spare" AS "lego_inventory_parts_is_spare", "lego_parts"."part_num" AS "lego_parts_part_num" FROM "lego_inventory_parts", "lego_parts" WHERE "lego_inventory_parts"."part_num" = "lego_parts"."part_num"
+
+mappingId	MAPPING-ID12
+target		<http://seminar128.com/lego_inventories/id={id}> a <http://seminar128.com/lego_inventories> ; <http://seminar128.com/lego_inventories#id> {id}^^xsd:integer ; <http://seminar128.com/lego_inventories#version> {version}^^xsd:integer ; <http://seminar128.com/lego_inventories#set_num> {set_num}^^xsd:string . 
+source		SELECT * FROM "lego_inventories"
+
+mappingId	MAPPING-ID13
+target		<http://seminar128.com/lego_inventories/id={lego_inventories_id}> <http://seminar128.com/lego_inventories#ref-set_num> <http://seminar128.com/lego_sets/set_num={lego_sets_set_num}> . 
+source		SELECT "lego_inventories"."id" AS "lego_inventories_id", "lego_sets"."set_num" AS "lego_sets_set_num" FROM "lego_inventories", "lego_sets" WHERE "lego_inventories"."set_num" = "lego_sets"."set_num"
+
+mappingId	MAPPING-ID14
+target		<http://seminar128.com/lego_parts/part_num={part_num}> a <http://seminar128.com/lego_parts> ; <http://seminar128.com/lego_parts#part_num> {part_num}^^xsd:string ; <http://seminar128.com/lego_parts#name> {name}^^xsd:string ; <http://seminar128.com/lego_parts#part_cat_id> {part_cat_id}^^xsd:integer . 
+source		SELECT * FROM "lego_parts"
+
+mappingId	MAPPING-ID15
+target		<http://seminar128.com/lego_parts/part_num={lego_parts_part_num}> <http://seminar128.com/lego_parts#ref-part_cat_id> <http://seminar128.com/lego_part_categories/id={lego_part_categories_id}> . 
+source		SELECT "lego_parts"."part_num" AS "lego_parts_part_num", "lego_part_categories"."id" AS "lego_part_categories_id" FROM "lego_parts", "lego_part_categories" WHERE "lego_parts"."part_cat_id" = "lego_part_categories"."id"
+
+mappingId	MAPPING-ID16
+target		<http://seminar128.com/lego_sets/set_num={set_num}> a <http://seminar128.com/lego_sets> ; <http://seminar128.com/lego_sets#set_num> {set_num}^^xsd:string ; <http://seminar128.com/lego_sets#name> {name}^^xsd:string ; <http://seminar128.com/lego_sets#year> {year}^^xsd:integer ; <http://seminar128.com/lego_sets#theme_id> {theme_id}^^xsd:integer ; <http://seminar128.com/lego_sets#num_parts> {num_parts}^^xsd:integer . 
+source		SELECT * FROM "lego_sets"
+
+mappingId	MAPPING-ID17
+target		<http://seminar128.com/lego_sets/set_num={lego_sets_set_num}> <http://seminar128.com/lego_sets#ref-theme_id> <http://seminar128.com/lego_themes/id={lego_themes_id}> . 
+source		SELECT "lego_sets"."set_num" AS "lego_sets_set_num", "lego_themes"."id" AS "lego_themes_id" FROM "lego_sets", "lego_themes" WHERE "lego_sets"."theme_id" = "lego_themes"."id"
+]]
+

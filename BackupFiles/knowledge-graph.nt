@@ -1,0 +1,57 @@
+<http://seminar128.org/student_info/student/5> <http://seminar128.org/student_info#cgpa> "3.40"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://seminar128.org/student_info/student/3> <http://seminar128.org/student_info#cgpa> "3.20"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://seminar128.org/student_info/student/1> <http://seminar128.org/student_info#cgpa> "3.20"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://seminar128.org/student_info/student/4> <http://seminar128.org/student_info#cgpa> "3.90"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://seminar128.org/student_info/student/2> <http://seminar128.org/student_info#cgpa> "3.70"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://seminar128.org/student_info/department/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#department> .
+<http://seminar128.org/student_info/department/3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#department> .
+<http://seminar128.org/student_info/department/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#department> .
+<http://seminar128.org/student_info/department/3> <http://seminar128.org/student_info#departmentName> "Economics & Business Administration" .
+<http://seminar128.org/student_info/department/1> <http://seminar128.org/student_info#departmentName> "Natural Sciences" .
+<http://seminar128.org/student_info/department/2> <http://seminar128.org/student_info#departmentName> "Computer Sciences" .
+<http://seminar128.org/student_info/student/2> <http://seminar128.org/student_info#firstName> "Robert" .
+<http://seminar128.org/student_info/student/1> <http://seminar128.org/student_info#firstName> "Maria" .
+<http://seminar128.org/student_info/student/5> <http://seminar128.org/student_info#firstName> "Mike" .
+<http://seminar128.org/student_info/student/4> <http://seminar128.org/student_info#firstName> "Lucy" .
+<http://seminar128.org/student_info/student/3> <http://seminar128.org/student_info#firstName> "Alesco" .
+<http://seminar128.org/student_info/student/5> <http://seminar128.org/student_info#dob> "1998-03-18"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://seminar128.org/student_info/student/3> <http://seminar128.org/student_info#dob> "2001-07-09"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://seminar128.org/student_info/student/1> <http://seminar128.org/student_info#dob> "2001-02-15"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://seminar128.org/student_info/student/2> <http://seminar128.org/student_info#dob> "1999-04-22"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://seminar128.org/student_info/student/4> <http://seminar128.org/student_info#dob> "2000-11-30"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://seminar128.org/student_info/program/6> <http://seminar128.org/student_info#programName> "Business Administration" .
+<http://seminar128.org/student_info/program/1> <http://seminar128.org/student_info#programName> "Chemistry" .
+<http://seminar128.org/student_info/program/5> <http://seminar128.org/student_info#programName> "Neurorobotics" .
+<http://seminar128.org/student_info/program/4> <http://seminar128.org/student_info#programName> "Web Engineering" .
+<http://seminar128.org/student_info/program/2> <http://seminar128.org/student_info#programName> "Physics" .
+<http://seminar128.org/student_info/program/7> <http://seminar128.org/student_info#programName> "Business Information Systems" .
+<http://seminar128.org/student_info/program/3> <http://seminar128.org/student_info#programName> "Automotive Software Engineering" .
+<http://seminar128.org/student_info/program/3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#program> .
+<http://seminar128.org/student_info/program/4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#program> .
+<http://seminar128.org/student_info/program/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#program> .
+<http://seminar128.org/student_info/program/7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#program> .
+<http://seminar128.org/student_info/program/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#program> .
+<http://seminar128.org/student_info/program/6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#program> .
+<http://seminar128.org/student_info/program/5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#program> .
+<http://seminar128.org/student_info/student/5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#student> .
+<http://seminar128.org/student_info/student/3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#student> .
+<http://seminar128.org/student_info/student/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#student> .
+<http://seminar128.org/student_info/student/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#student> .
+<http://seminar128.org/student_info/student/4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://seminar128.org/student_info#student> .
+<http://seminar128.org/student_info/student/1> <http://seminar128.org/student_info#lastName> "Lucy" .
+<http://seminar128.org/student_info/student/2> <http://seminar128.org/student_info#lastName> "Bruco" .
+<http://seminar128.org/student_info/student/4> <http://seminar128.org/student_info#lastName> "Brown" .
+<http://seminar128.org/student_info/student/5> <http://seminar128.org/student_info#lastName> "Wilson" .
+<http://seminar128.org/student_info/student/3> <http://seminar128.org/student_info#lastName> "Miyan" .
+<http://seminar128.org/student_info/student/4> <http://seminar128.org/student_info#enrolledIn> <http://seminar128.org/student_info/program/4> .
+<http://seminar128.org/student_info/student/5> <http://seminar128.org/student_info#enrolledIn> <http://seminar128.org/student_info/program/5> .
+<http://seminar128.org/student_info/student/3> <http://seminar128.org/student_info#enrolledIn> <http://seminar128.org/student_info/program/2> .
+<http://seminar128.org/student_info/student/2> <http://seminar128.org/student_info#enrolledIn> <http://seminar128.org/student_info/program/3> .
+<http://seminar128.org/student_info/student/1> <http://seminar128.org/student_info#enrolledIn> <http://seminar128.org/student_info/program/1> .
+<http://seminar128.org/student_info/program/6> <http://seminar128.org/student_info#belongsTo> <http://seminar128.org/student_info/department/3> .
+<http://seminar128.org/student_info/program/3> <http://seminar128.org/student_info#belongsTo> <http://seminar128.org/student_info/department/2> .
+<http://seminar128.org/student_info/program/5> <http://seminar128.org/student_info#belongsTo> <http://seminar128.org/student_info/department/2> .
+<http://seminar128.org/student_info/program/7> <http://seminar128.org/student_info#belongsTo> <http://seminar128.org/student_info/department/3> .
+<http://seminar128.org/student_info/program/1> <http://seminar128.org/student_info#belongsTo> <http://seminar128.org/student_info/department/1> .
+<http://seminar128.org/student_info/program/4> <http://seminar128.org/student_info#belongsTo> <http://seminar128.org/student_info/department/2> .
+<http://seminar128.org/student_info/program/2> <http://seminar128.org/student_info#belongsTo> <http://seminar128.org/student_info/department/1> .

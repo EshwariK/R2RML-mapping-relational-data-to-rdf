@@ -1,0 +1,29 @@
+[PrefixDeclaration]
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+owl:		http://www.w3.org/2002/07/owl#
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+
+[MappingDeclaration] @collection [[
+mappingId	MAPPING-ID1
+target		<http://seminar128.com/student/id={id}> a <http://seminar128.com/student> ; <http://seminar128.com/student#id> {id}^^xsd:integer ; <http://seminar128.com/student#firstname> {firstname}^^xsd:string ; <http://seminar128.com/student#lastname> {lastname}^^xsd:string ; <http://seminar128.com/student#dob> {dob}^^xsd:date ; <http://seminar128.com/student#cgpa> {cgpa}^^xsd:decimal ; <http://seminar128.com/student#program_id> {program_id}^^xsd:integer . 
+source		SELECT * FROM "student"
+
+mappingId	MAPPING-ID2
+target		<http://seminar128.com/student/id={student_id}> <http://seminar128.com/student#ref-program_id> <http://seminar128.com/program/id={program_id}> . 
+source		SELECT "student"."id" AS "student_id", "program"."id" AS "program_id" FROM "student", "program" WHERE "student"."program_id" = "program"."id"
+
+mappingId	MAPPING-ID3
+target		<http://seminar128.com/program/id={id}> a <http://seminar128.com/program> ; <http://seminar128.com/program#id> {id}^^xsd:integer ; <http://seminar128.com/program#name> {name}^^xsd:string ; <http://seminar128.com/program#department_id> {department_id}^^xsd:integer . 
+source		SELECT * FROM "program"
+
+mappingId	MAPPING-ID4
+target		<http://seminar128.com/program/id={program_id}> <http://seminar128.com/program#ref-department_id> <http://seminar128.com/department/id={department_id}> . 
+source		SELECT "program"."id" AS "program_id", "department"."id" AS "department_id" FROM "program", "department" WHERE "program"."department_id" = "department"."id"
+
+mappingId	MAPPING-ID5
+target		<http://seminar128.com/department/id={id}> a <http://seminar128.com/department> ; <http://seminar128.com/department#id> {id}^^xsd:integer ; <http://seminar128.com/department#name> {name}^^xsd:string . 
+source		SELECT * FROM "department"
+]]
+

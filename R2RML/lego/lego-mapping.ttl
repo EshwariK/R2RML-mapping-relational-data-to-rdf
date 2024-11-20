@@ -1,0 +1,308 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix : <http://example.org/lego#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:MAPPING-ID1> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT id, name, rgb, is_trans FROM \"lego_colors\""
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:class :Color;
+      rr:template "http://example.org/lego/colors/{id}";
+      rr:termType rr:IRI
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:string;
+          rr:termType rr:Literal;
+          rr:column "rgb"
+        ];
+      rr:predicate :colorRgb
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :isTrans;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:boolean;
+          rr:column "is_trans";
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :colorName;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:string;
+          rr:column "name"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :colorId;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:datatype xsd:integer;
+          rr:termType rr:Literal;
+          rr:column "id"
+        ]
+    ] .
+
+<urn:MAPPING-ID2> a rr:TriplesMap;
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "name";
+          rr:datatype xsd:string
+        ];
+      rr:predicate :themeName
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:datatype xsd:integer;
+          rr:column "id";
+          rr:termType rr:Literal
+        ];
+      rr:predicate :themeId
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :parentThemeId;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:IRI;
+          rr:template "http://example.org/lego/themes/{parent_id}"
+        ]
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:template "http://example.org/lego/themes/{id}";
+      rr:termType rr:IRI;
+      rr:class :Theme
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT id, name, parent_id FROM \"lego_themes\""
+    ] .
+
+<urn:MAPPING-ID3> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT id, name FROM \"lego_part_categories\""
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer;
+          rr:column "id"
+        ];
+      rr:predicate :partCategoryId
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :partName;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:string;
+          rr:termType rr:Literal;
+          rr:column "name"
+        ]
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:termType rr:IRI;
+      rr:class :Part;
+      rr:template "http://example.org/lego/part_categories/{id}"
+    ] .
+
+<urn:MAPPING-ID4> a rr:TriplesMap;
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:predicate :setName;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:column "version";
+          rr:datatype xsd:string;
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :setNumber;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:string;
+          rr:termType rr:Literal;
+          rr:column "id"
+        ]
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:class :Set;
+      rr:termType rr:IRI;
+      rr:template "http://example.org/lego/inventories/{id}"
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT id, version FROM \"lego_inventories\""
+    ] .
+
+<urn:MAPPING-ID5> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT inventory_id, part_num, color_id, quantity, is_spare FROM \"lego_inventory_parts\""
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:predicate :partNumber;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:string;
+          rr:column "inventory_id"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "color_id";
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer
+        ];
+      rr:predicate :colorId
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer;
+          rr:column "part_num"
+        ];
+      rr:predicate :partCategoryId
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :isTrans;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "quantity";
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer
+        ]
+    ];
+  rr:subjectMap [ a rr:SubjectMap, rr:TermMap;
+      rr:class :Part;
+      rr:termType rr:IRI;
+      rr:template "http://example.org/lego/inventory_parts/{inventory_id}_{part_num}_{color_id}"
+    ] .
+
+<urn:MAPPING-ID6> a rr:TriplesMap;
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:predicate :setNumber;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:string;
+          rr:column "inventory_id";
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer;
+          rr:column "quantity"
+        ];
+      rr:predicate :setYear
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :setName;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:column "set_num";
+          rr:termType rr:Literal;
+          rr:datatype xsd:string
+        ]
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:template "http://example.org/lego/inventory_sets/{inventory_id}_{set_num}";
+      rr:class :Set;
+      rr:termType rr:IRI
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT inventory_id, set_num, quantity FROM \"lego_inventory_sets\""
+    ] .
+
+<urn:MAPPING-ID8> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT part_num, name, part_cat_id FROM \"lego_parts\""
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:predicate :partNumber;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:string;
+          rr:termType rr:Literal;
+          rr:column "part_num"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :partName;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:string;
+          rr:column "name"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "part_cat_id";
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer
+        ];
+      rr:predicate :partCategoryId
+    ];
+  rr:subjectMap [ a rr:SubjectMap, rr:TermMap;
+      rr:template "http://example.org/lego/parts/{part_num}";
+      rr:class :Part;
+      rr:termType rr:IRI
+    ] .
+
+<urn:MAPPING-ID9> a rr:TriplesMap;
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:string;
+          rr:column "name"
+        ];
+      rr:predicate :setName
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :setNumber;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:string;
+          rr:column "set_num";
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:column "theme_id";
+          rr:datatype xsd:integer
+        ];
+      rr:predicate :setThemeId
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :numberOfParts;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:datatype xsd:integer;
+          rr:column "num_parts";
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate :setYear;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer;
+          rr:column "year"
+        ]
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT set_num, name, year, theme_id, num_parts FROM \"lego_sets\""
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:class :Set;
+      rr:template "http://example.org/lego/sets/{set_num}";
+      rr:termType rr:IRI
+    ] .
+
+<urn:MAPPING-ID10> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT id, name, parent_id FROM \"lego_themes\""
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:template "http://example.org/lego/themes/{id}";
+      rr:termType rr:IRI;
+      rr:class :Theme
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:IRI;
+          rr:template "http://example.org/lego/themes/{parent_id}"
+        ];
+      rr:predicate :parentThemeId
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "name";
+          rr:datatype xsd:string
+        ];
+      rr:predicate :themeName
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer;
+          rr:column "id"
+        ];
+      rr:predicate :themeId
+    ] .

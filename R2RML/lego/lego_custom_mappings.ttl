@@ -1,0 +1,266 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix : <http://seminar128.org/lego#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<#MAPPING-ID1>
+    rr:logicalTable [ rr:tableName "lego_colors" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/lego/colors/{id}";
+        rr:class :Color;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :colorName;
+        rr:objectMap [
+            rr:datatype xsd:string;
+            rr:termType rr:Literal;
+            rr:column "name";
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :colorRgb;
+        rr:objectMap [
+            rr:datatype xsd:string;
+            rr:termType rr:Literal;
+            rr:column "rgb";
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :isTrans;
+        rr:objectMap [
+            rr:datatype xsd:boolean;
+            rr:termType rr:Literal;
+            rr:column "is_trans";
+        ]
+    ].
+
+<#MAPPING-ID2>
+    rr:logicalTable [ rr:tableName "lego_parts" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/lego/parts/{part_num}";
+        rr:class :Part;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :partName;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:string;
+            rr:column "name"
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :partCategoryId;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID3>;
+            rr:joinCondition [
+                rr:child "part_cat_id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+<#MAPPING-ID3>
+    rr:logicalTable [ rr:tableName "lego_part_categories" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/lego/category/{id}";
+        rr:class :Part;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :partCategoryName;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:string;
+            rr:column "name"
+        ];
+    ].
+
+<#MAPPING-ID4>
+    rr:logicalTable [ rr:tableName "lego_themes" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/lego/theme/{id}";
+        rr:class :Theme;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :themeName;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:string;
+            rr:column "name"
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :parentThemeId ;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID4> ;
+            rr:joinCondition [
+                rr:child "parent_id" ;
+                rr:parent "id" ;
+            ] ;
+        ] ;
+    ] .
+
+<#MAPPING-ID5>
+    rr:logicalTable [ rr:tableName "lego_sets" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/lego/sets/{set_num}";
+        rr:class :Set;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :setName;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:string;
+            rr:column "name"
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :setYear;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:integer;
+            rr:column "year"
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :setThemeId;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID4>;
+            rr:joinCondition [
+                rr:child "theme_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :numberOfParts;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:integer;
+            rr:column "num_parts"
+        ];
+    ].
+
+<#MAPPING-ID6>
+    rr:logicalTable [ rr:tableName "lego_inventories" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/lego/inventories/{id}";
+        rr:class :Set;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :setVersion;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:integer;
+            rr:column "version"
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :hasSetNumber;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID5>;
+            rr:joinCondition [
+                rr:child "set_num";
+                rr:parent "set_num";
+            ];
+        ];
+    ].
+
+<#MAPPING-ID7>
+    rr:logicalTable [ rr:tableName "lego_inventory_parts" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/lego/inventory_parts/{inventory_id}_{part_num}_{color_id}";
+        rr:class :Part;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :hasInventoryId;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID6>;
+            rr:joinCondition [
+                rr:child "inventory_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :hasPartNumber;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID2>;
+            rr:joinCondition [
+                rr:child "part_num";
+                rr:parent "part_num";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :hasColorId;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID1>;
+            rr:joinCondition [
+                rr:child "color_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :quantity;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:integer;
+            rr:column "quantity"
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :isSpare;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:boolean;
+            rr:column "is_spare"
+        ];
+    ].
+
+<#MAPPING-ID8>
+    rr:logicalTable [ rr:tableName "lego_inventory_sets" ];
+    rr:subjectMap [
+        rr:template "http://seminar128.org/lego/inventory_parts/{inventory_id}_{set_num}";
+        rr:class :Set;
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :hasInventoryId;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID6>;
+            rr:joinCondition [
+                rr:child "inventory_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :hasSetNumber;
+        rr:objectMap [
+            rr:parentTriplesMap <#MAPPING-ID5>;
+            rr:joinCondition [
+                rr:child "set_num";
+                rr:parent "set_num";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate :quantity;
+        rr:objectMap [
+            rr:termType rr:Literal;
+            rr:datatype xsd:integer;
+            rr:column "quantity"
+        ];
+    ].

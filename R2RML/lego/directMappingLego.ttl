@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://seminar128.com/"
+     xml:base="http://seminar128.com/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://seminar128.com/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://seminar128.com/lego_inventories#ref-set_num -->
+
+
+    <owl:ObjectProperty rdf:about="http://seminar128.com/lego_inventories#ref-set_num"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_parts#ref-color_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://seminar128.com/lego_inventory_parts#ref-color_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_parts#ref-inventory_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://seminar128.com/lego_inventory_parts#ref-inventory_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_parts#ref-part_num -->
+
+
+    <owl:ObjectProperty rdf:about="http://seminar128.com/lego_inventory_parts#ref-part_num"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_sets#ref-inventory_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://seminar128.com/lego_inventory_sets#ref-inventory_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_sets#ref-set_num -->
+
+
+    <owl:ObjectProperty rdf:about="http://seminar128.com/lego_inventory_sets#ref-set_num"/>
+    
+
+
+    <!-- http://seminar128.com/lego_parts#ref-part_cat_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://seminar128.com/lego_parts#ref-part_cat_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_sets#ref-theme_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://seminar128.com/lego_sets#ref-theme_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_themes#ref-parent_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://seminar128.com/lego_themes#ref-parent_id"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://seminar128.com/lego_colors#id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_colors#id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_colors#is_trans -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_colors#is_trans"/>
+    
+
+
+    <!-- http://seminar128.com/lego_colors#name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_colors#name"/>
+    
+
+
+    <!-- http://seminar128.com/lego_colors#rgb -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_colors#rgb"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventories#id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventories#id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventories#set_num -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventories#set_num"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventories#version -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventories#version"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_parts#color_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventory_parts#color_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_parts#inventory_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventory_parts#inventory_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_parts#is_spare -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventory_parts#is_spare"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_parts#part_num -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventory_parts#part_num"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_parts#quantity -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventory_parts#quantity"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_sets#inventory_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventory_sets#inventory_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_sets#quantity -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventory_sets#quantity"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_sets#set_num -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_inventory_sets#set_num"/>
+    
+
+
+    <!-- http://seminar128.com/lego_part_categories#id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_part_categories#id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_part_categories#name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_part_categories#name"/>
+    
+
+
+    <!-- http://seminar128.com/lego_parts#name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_parts#name"/>
+    
+
+
+    <!-- http://seminar128.com/lego_parts#part_cat_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_parts#part_cat_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_parts#part_num -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_parts#part_num"/>
+    
+
+
+    <!-- http://seminar128.com/lego_sets#name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_sets#name"/>
+    
+
+
+    <!-- http://seminar128.com/lego_sets#num_parts -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_sets#num_parts"/>
+    
+
+
+    <!-- http://seminar128.com/lego_sets#set_num -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_sets#set_num"/>
+    
+
+
+    <!-- http://seminar128.com/lego_sets#theme_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_sets#theme_id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_sets#year -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_sets#year"/>
+    
+
+
+    <!-- http://seminar128.com/lego_themes#id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_themes#id"/>
+    
+
+
+    <!-- http://seminar128.com/lego_themes#name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_themes#name"/>
+    
+
+
+    <!-- http://seminar128.com/lego_themes#parent_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://seminar128.com/lego_themes#parent_id"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://seminar128.com/lego_colors -->
+
+
+    <owl:Class rdf:about="http://seminar128.com/lego_colors"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventories -->
+
+
+    <owl:Class rdf:about="http://seminar128.com/lego_inventories"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_parts -->
+
+
+    <owl:Class rdf:about="http://seminar128.com/lego_inventory_parts"/>
+    
+
+
+    <!-- http://seminar128.com/lego_inventory_sets -->
+
+
+    <owl:Class rdf:about="http://seminar128.com/lego_inventory_sets"/>
+    
+
+
+    <!-- http://seminar128.com/lego_part_categories -->
+
+
+    <owl:Class rdf:about="http://seminar128.com/lego_part_categories"/>
+    
+
+
+    <!-- http://seminar128.com/lego_parts -->
+
+
+    <owl:Class rdf:about="http://seminar128.com/lego_parts"/>
+    
+
+
+    <!-- http://seminar128.com/lego_sets -->
+
+
+    <owl:Class rdf:about="http://seminar128.com/lego_sets"/>
+    
+
+
+    <!-- http://seminar128.com/lego_themes -->
+
+
+    <owl:Class rdf:about="http://seminar128.com/lego_themes"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.20) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,44 @@
+[PrefixDeclaration]
+rdf:        http://www.w3.org/1999/02/22-rdf-syntax-ns#
+rdfs:       http://www.w3.org/2000/01/rdf-schema#
+owl:        http://www.w3.org/2002/07/owl#
+xsd:        http://www.w3.org/2001/XMLSchema#
+lego:       http://example.org/lego#
+
+[MappingDeclaration] @collection [[
+mappingId   MAPPING-ID1
+target      <http://example.org/lego/colors/{id}> a lego:Color; lego:colorId {id}^^xsd:integer; lego:colorName {name}^^xsd:string; lego:colorRgb {rgb}^^xsd:string; lego:isTrans {is_trans}^^xsd:boolean .
+source      SELECT id, name, rgb, is_trans FROM "lego_colors"
+
+mappingId   MAPPING-ID2
+target      <http://example.org/lego/themes/{id}> a lego:Theme; lego:themeId {id}^^xsd:integer; lego:themeName {name}^^xsd:string; lego:parentThemeId <http://example.org/lego/themes/{parent_id}> .
+source      SELECT id, name, parent_id FROM "lego_themes"
+
+mappingId   MAPPING-ID3
+target      <http://example.org/lego/part_categories/{id}> a lego:Part; lego:partCategoryId {id}^^xsd:integer; lego:partName {name}^^xsd:string .
+source      SELECT id, name FROM "lego_part_categories"
+
+mappingId   MAPPING-ID4
+target      <http://example.org/lego/inventories/{id}> a lego:Set; lego:setNumber {id}^^xsd:integer; lego:setName {version}^^xsd:integer .
+source      SELECT id, version FROM "lego_inventories"
+
+mappingId   MAPPING-ID5
+target      <http://example.org/lego/inventory_parts/{inventory_id}_{part_num}_{color_id}> a lego:Part; lego:partNumber {inventory_id}^^xsd:integer; lego:partCategoryId {part_num}^^xsd:string; lego:colorId {color_id}^^xsd:integer; lego:isTrans {quantity}^^xsd:integer; lego:belongsToTheme {is_spare}^^xsd:boolean .
+source      SELECT inventory_id, part_num, color_id, quantity, is_spare FROM "lego_inventory_parts"
+
+mappingId   MAPPING-ID6
+target      <http://example.org/lego/inventory_sets/{inventory_id}_{set_num}> a lego:Set; lego:setNumber {inventory_id}^^xsd:integer; lego:setName {set_num}^^xsd:string; lego:setYear {quantity}^^xsd:integer .
+source      SELECT inventory_id, set_num, quantity FROM "lego_inventory_sets"
+
+mappingId   MAPPING-ID8
+target      <http://example.org/lego/parts/{part_num}> a lego:Part; lego:partNumber {part_num}^^xsd:string; lego:partName {name}^^xsd:string; lego:partCategoryId {part_cat_id}^^xsd:integer .
+source      SELECT part_num, name, part_cat_id FROM "lego_parts"
+
+mappingId   MAPPING-ID9
+target      <http://example.org/lego/sets/{set_num}> a lego:Set; lego:setNumber {set_num}^^xsd:string; lego:setName {name}^^xsd:string; lego:setYear {year}^^xsd:integer; lego:setThemeId {theme_id}^^xsd:integer; lego:numberOfParts {num_parts}^^xsd:integer .
+source      SELECT set_num, name, year, theme_id, num_parts FROM "lego_sets"
+
+mappingId   MAPPING-ID10
+target      <http://example.org/lego/themes/{id}> a lego:Theme; lego:themeId {id}^^xsd:integer; lego:themeName {name}^^xsd:string; lego:parentThemeId <http://example.org/lego/themes/{parent_id}> .
+source      SELECT id, name, parent_id FROM "lego_themes"
+]]

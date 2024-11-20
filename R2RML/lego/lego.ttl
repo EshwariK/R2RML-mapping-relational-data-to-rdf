@@ -1,0 +1,137 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lego: <http://example.org/lego#> .
+
+# Ontology Definition
+<http://example.org/lego> a owl:Ontology ;
+    rdfs:label "LEGO Ontology" ;
+    rdfs:comment "An ontology for representing LEGO sets, parts, colors, and themes." .
+
+# Classes
+lego:Color a owl:Class ;
+    rdfs:label "Color" ;
+    rdfs:comment "A class representing a LEGO color." .
+
+lego:Theme a owl:Class ;
+    rdfs:label "Theme" ;
+    rdfs:comment "A class representing a LEGO theme." .
+
+lego:Part a owl:Class ;
+    rdfs:label "Part" ;
+    rdfs:comment "A class representing a LEGO part." .
+
+lego:Set a owl:Class ;
+    rdfs:label "Set" ;
+    rdfs:comment "A class representing a LEGO set." .
+
+# Properties
+lego:colorId a owl:DatatypeProperty ;
+    rdfs:domain lego:Color ;
+    rdfs:range xsd:integer ;
+    rdfs:label "color ID" ;
+    rdfs:comment "The ID of a LEGO color." .
+
+lego:colorName a owl:DatatypeProperty ;
+    rdfs:domain lego:Color ;
+    rdfs:range xsd:string ;
+    rdfs:label "color name" ;
+    rdfs:comment "The name of a LEGO color." .
+
+lego:colorRgb a owl:DatatypeProperty ;
+    rdfs:domain lego:Color ;
+    rdfs:range xsd:string ;
+    rdfs:label "color RGB" ;
+    rdfs:comment "The RGB value of a LEGO color." .
+
+lego:isTrans a owl:DatatypeProperty ;
+    rdfs:domain lego:Color ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is transparent" ;
+    rdfs:comment "Indicates if a LEGO color is transparent." .
+
+lego:themeId a owl:DatatypeProperty ;
+    rdfs:domain lego:Theme ;
+    rdfs:range xsd:integer ;
+    rdfs:label "theme ID" ;
+    rdfs:comment "The ID of a LEGO theme." .
+
+lego:themeName a owl:DatatypeProperty ;
+    rdfs:domain lego:Theme ;
+    rdfs:range xsd:string ;
+    rdfs:label "theme name" ;
+    rdfs:comment "The name of a LEGO theme." .
+
+lego:parentThemeId a owl:ObjectProperty ;
+    rdfs:domain lego:Theme ;
+    rdfs:range lego:Theme ;
+    rdfs:label "parent theme ID" ;
+    rdfs:comment "The parent ID of a LEGO theme." .
+
+lego:partNumber a owl:DatatypeProperty ;
+    rdfs:domain lego:Part ;
+    rdfs:range xsd:string ;
+    rdfs:label "part number" ;
+    rdfs:comment "The number of a LEGO part." .
+
+lego:partName a owl:DatatypeProperty ;
+    rdfs:domain lego:Part ;
+    rdfs:range xsd:string ;
+    rdfs:label "part name" ;
+    rdfs:comment "The name of a LEGO part." .
+
+lego:partCategoryId a owl:ObjectProperty ;
+    rdfs:domain lego:Part ;
+    rdfs:range xsd:integer ;
+    rdfs:label "part category ID" ;
+    rdfs:comment "The category ID of a LEGO part." .
+
+lego:partCategoryName a owl:DatatypeProperty ;
+    rdfs:domain lego:Part ;
+    rdfs:range xsd:string ;
+    rdfs:label "part category name" ;
+    rdfs:comment "The category name of a LEGO part." .
+
+lego:setNumber a owl:DatatypeProperty ;
+    rdfs:domain lego:Set ;
+    rdfs:range xsd:string ;
+    rdfs:label "set number" ;
+    rdfs:comment "The number of a LEGO set." .
+
+lego:setName a owl:DatatypeProperty ;
+    rdfs:domain lego:Set ;
+    rdfs:range xsd:string ;
+    rdfs:label "set name" ;
+    rdfs:comment "The name of a LEGO set." .
+
+lego:setYear a owl:DatatypeProperty ;
+    rdfs:domain lego:Set ;
+    rdfs:range xsd:integer ;
+    rdfs:label "set year" ;
+    rdfs:comment "The year of a LEGO set." .
+
+lego:setThemeId a owl:ObjectProperty ;
+    rdfs:domain lego:Theme ;
+    rdfs:range xsd:integer ;
+    rdfs:label "set theme ID" ;
+    rdfs:comment "The theme ID of a LEGO set." .
+
+lego:numberOfParts a owl:DatatypeProperty ;
+    rdfs:domain lego:Set ;
+    rdfs:range xsd:integer ;
+    rdfs:label "number of parts" ;
+    rdfs:comment "The number of parts in a LEGO set." .
+
+# Relationships
+lego:belongsToTheme a owl:ObjectProperty ;
+    rdfs:domain lego:Set ;
+    rdfs:range lego:Theme ;
+    rdfs:label "belongs to theme" ;
+    rdfs:comment "Indicates that a set belongs to a particular theme." .
+
+lego:partOfCategory a owl:ObjectProperty ;
+    rdfs:domain lego:Part ;
+    rdfs:range lego:Theme ;
+    rdfs:label "part of category" ;
+    rdfs:comment "Indicates that a part belongs to a particular category." .

@@ -1,0 +1,77 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://seminar128.org/student_info#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+# Ontology Definition
+<http://seminar128.org/student_info> a owl:Ontology ;
+    rdfs:label "Student Ontology" ;
+    rdfs:comment "An ontology for representing student details, department and program" .
+
+# Classes
+:student a owl:Class ;
+    rdfs:label "student" ;
+    rdfs:subClassOf foaf:Person ;
+    rdfs:comment "A class representing student details" .
+
+:department a owl:Class ;
+    rdfs:label "department" ;
+    rdfs:comment "A class representing university department" .
+
+:program a owl:Class ;
+    rdfs:label "program" ;
+    rdfs:comment "A class representing degree program" .
+
+# Properties
+:firstName a owl:DatatypeProperty ;
+    rdfs:domain :student ;
+    rdfs:range xsd:string ;
+    rdfs:label "first name" ;
+    rdfs:subPropertyOf foaf:firstName ;
+    rdfs:comment "first name of a student" .
+
+:lastName a owl:DatatypeProperty ;
+    rdfs:domain :student ;
+    rdfs:range xsd:string ;
+    rdfs:label "last name" ;
+    rdfs:subPropertyOf foaf:lastName ;
+    rdfs:comment "last name of a student" .
+
+:cgpa a owl:DatatypeProperty ;
+    rdfs:domain :student ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "cgpa" ;
+    rdfs:comment "cgpa of a student" .
+
+:dob a owl:DatatypeProperty ;
+    rdfs:domain :student ;
+    rdfs:range xsd:date ;
+    rdfs:label "Date of Birth" ;
+    rdfs:subPropertyOf foaf:birthday ;
+    rdfs:comment "Date of Birth of a student" .
+
+:enrolledIn a owl:ObjectProperty ;
+    rdfs:domain :student ;
+    rdfs:range :program ;
+    rdfs:label "enrolled in" ;
+    rdfs:comment "degree program in which student in enrolled in" .
+
+:programName a owl:DatatypeProperty ;
+    rdfs:domain :program ;
+    rdfs:range xsd:string ;
+    rdfs:label "program name" ;
+    rdfs:comment "name of a degree program" .
+
+:belongsTo a owl:ObjectProperty ;
+    rdfs:domain :program ;
+    rdfs:range :department ;
+    rdfs:label "belongs to" ;
+    rdfs:comment "department in which program belongs to" .
+
+:departmentName a owl:DatatypeProperty ;
+    rdfs:domain :department ;
+    rdfs:range xsd:string ;
+    rdfs:label "department name" ;
+    rdfs:comment "name of a department" .
